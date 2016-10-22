@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Add Choice</title>
+    </head>
+    <body>
+        {% if is_added %}
+            <a href='/polls/{{ question_id }}/add_choices'>Add another choice</a></br>
+            <a href='/polls/'>Return to homepage</a></br>
+            Choice: {{ choice_obj.choice_text }}</br>
+        {% else %}
+            <h3>Add a Choice</h3>
+            <form id='form' method='post' action='/polls/{{ question_id }}/add_choices/'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' name='submit' value='Add Choice'/>
+            </form>
+        {% endif %}
+    </body>
+</html>

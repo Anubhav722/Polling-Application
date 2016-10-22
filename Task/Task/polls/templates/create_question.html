@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Create Question</title>
+    </head>
+    <body>
+        {% if is_created %}
+            <a href='/polls/'>Return to homepage</a></br>
+            Question: {{ question_obj.question_text }}</br>
+            Description: {{ question_obj.description }}</br>
+        {% else %}
+            <h3>Create a Question</h3>
+            <form id='form' method='post' action='/polls/create_question/'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' name='submit' value='Create Question'/>
+                
+            </form>
+        {% endif %}
+    </body>
+</html>
